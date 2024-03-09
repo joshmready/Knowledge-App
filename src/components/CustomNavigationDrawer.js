@@ -1,5 +1,5 @@
 import { DrawerContentScrollView } from "@react-navigation/drawer";
-import { Drawer } from 'react-native-paper';
+import { Drawer, withTheme } from 'react-native-paper';
 
 // const ICON_FOR_ROUTE = {
 //     Available: 'clock-outline',
@@ -12,10 +12,14 @@ import { Drawer } from 'react-native-paper';
 
 // const IS_WEB = platform.OS === 'web';
 
-export default function CustomNavigationDrawer({ theme, ...navProps }) {
+function CustomNavigationDrawer({ theme, ...navProps }) {
     const { state, navigation } = navProps;
 
     const isActive = index => index === state.index;
+
+    // const scrollViewStyle = {
+    //     backgroundColor: theme.colors.background,
+    // }
 
     return (
         <DrawerContentScrollView {...navProps}>
@@ -31,3 +35,5 @@ export default function CustomNavigationDrawer({ theme, ...navProps }) {
         </DrawerContentScrollView>
     );
 }
+
+export default withTheme(CustomNavigationDrawer);
